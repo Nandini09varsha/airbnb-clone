@@ -1,0 +1,191 @@
+# Airbnb Clone - Cursor Development Rules
+
+## Project Goal
+Build a pixel-perfect desktop-only clone of the provided Airbnb listing reference.
+
+The reference is the single source of truth for:
+- Visual design
+- Layout and spacing
+- Typography
+- Colors
+- Icons
+- Images/assets
+- Interactions
+- Animations and transitions
+- Keyboard behavior
+- Focus management
+- Accessibility
+
+Do not approximate the reference when the exact behavior can be determined from it.
+
+## Tech Stack
+- React
+- Vite
+- JavaScript
+- CSS
+- lucide-react for icons where appropriate
+
+Do not introduce TypeScript unless explicitly requested.
+Do not introduce a backend unless it is genuinely required.
+Keep the implementation focused on the frontend experience.
+
+## Required Views
+The application must contain exactly these three primary views:
+
+1. Listing Page
+2. Photo Tour
+3. Lightbox
+
+### Listing Page
+- Reproduce the complete property listing page.
+- Match the reference layout, typography, spacing, colors, imagery, controls, and interactions.
+- "Show all photos" and hero/gallery images must open the appropriate gallery view.
+
+### Photo Tour
+- Full-screen photo gallery.
+- Opened from "Show all photos" or applicable gallery/hero images.
+- Match the reference's layout, controls, transitions, scrolling behavior, and interactions.
+
+### Lightbox
+- Single-photo viewer.
+- Openable from gallery photos.
+- Include previous/next navigation where present in the reference.
+- Support keyboard left/right navigation.
+- Support Escape to close where appropriate.
+- Preserve correct focus behavior.
+
+## Architecture
+Use a clean and reusable component architecture.
+
+Keep:
+- Page-level views in `src/pages`
+- Reusable UI components in `src/components`
+- Static/property-specific data in `src/data`
+
+Avoid unnecessarily large components.
+
+Extract repeated UI into reusable components when appropriate.
+
+Do not create abstractions merely for the sake of abstraction.
+
+## Data
+Separate property/content data from presentation logic where practical.
+
+Do not hardcode the same value repeatedly across multiple components.
+
+## Styling
+Prioritize visual fidelity over generic design conventions.
+
+Match:
+- Exact spacing
+- Font sizes and weights
+- Line heights
+- Border radii
+- Borders
+- Shadows
+- Colors
+- Image cropping
+- Alignment
+- Container widths
+- Grid/flex behavior
+
+Avoid unnecessary global styles that could interfere with component-specific styling.
+
+## Responsive Scope
+The assignment is desktop-only.
+
+Do not spend implementation time building a mobile version unless the reference behavior requires responsive behavior for desktop viewport changes.
+
+## Accessibility
+Implement accessibility as part of the feature, not as an afterthought.
+
+Include where appropriate:
+- Semantic HTML
+- Keyboard navigation
+- Visible focus states
+- Correct button/link semantics
+- Accessible labels
+- Logical tab order
+- Focus management for overlays
+- Escape-key behavior
+- Appropriate ARIA attributes only when necessary
+
+## Interactions
+Reproduce the reference behavior rather than inventing alternative interactions.
+
+Before implementing an interaction, inspect the reference carefully.
+
+Pay attention to:
+- Hover states
+- Active states
+- Transitions
+- Overlay behavior
+- Scroll behavior
+- Keyboard controls
+- Opening/closing behavior
+- Focus movement
+
+## Images and Assets
+Use the correct reference assets whenever possible.
+
+Do not fabricate replacement images when the correct asset can be identified.
+
+Do not copy/lift the reference site's source code.
+
+The implementation must be original.
+
+## AI-Assisted Development
+Work incrementally.
+
+Before making large changes:
+1. Inspect the existing project.
+2. Understand the current architecture.
+3. Identify which files need modification.
+4. Make the smallest reasonable set of changes.
+5. Verify the result.
+
+Do not rewrite unrelated files.
+
+Do not delete working code unless there is a clear reason.
+
+Do not install unnecessary dependencies.
+
+## Code Quality
+Write readable, maintainable React code.
+
+Prefer:
+- Clear component names
+- Small focused components
+- Meaningful variable names
+- Reusable components
+- Minimal duplication
+
+Avoid:
+- Giant components
+- Dead code
+- Unused imports
+- Unnecessary dependencies
+- Excessive comments
+- Placeholder implementations left in the final version
+
+## Verification
+After implementing a feature:
+- Run the application.
+- Check the browser result.
+- Test relevant interactions.
+- Check the console for errors.
+- Fix errors before moving to the next feature.
+
+Do not declare a feature complete based only on code compilation.
+
+## Git Safety
+Do not push the project to a public GitHub repository.
+
+Do not expose secrets, API keys, credentials, or `.env` files.
+
+## Important Constraint
+The provided Airbnb reference is the single source of truth.
+
+Do not rely on assumptions about how Airbnb normally works when the reference behaves differently.
+
+When there is a conflict between a generic design convention and the reference, follow the reference.
