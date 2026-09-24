@@ -1,5 +1,4 @@
-const IMG = (path) =>
-  `https://airbnb-clone-umber-two.vercel.app/assets/images/${path}`;
+const IMG = (path) => `/assets/images/${path}`;
 
 export const asset = IMG;
 
@@ -10,15 +9,51 @@ const photo = (file, category) => ({
 });
 
 export const photoCategories = [
-  { id: "living-1", label: "Living room 1", cover: IMG("a9831aeb-f441-44f5-a38f-4cf54e3f0fcf.jpeg") },
-  { id: "living-2", label: "Living room 2", cover: IMG("090d8b0b-b539-42c0-84f8-e1fb0cdf9a93.jpeg") },
-  { id: "kitchen", label: "Full kitchen", cover: IMG("56c44812-52c0-4481-90d8-101ec1f34c7a.jpeg") },
-  { id: "bedroom", label: "Bedroom", cover: IMG("67c61c6f-6260-4809-9510-0360e58a345d.jpeg") },
-  { id: "bathroom", label: "Full bathroom", cover: IMG("97c78f8a-5090-4663-aebc-ba4e13b47092.jpeg") },
-  { id: "gym", label: "Gym", cover: IMG("9aa8e65f-94ac-4ba0-9a10-9ec91e536d22.jpeg") },
-  { id: "exterior", label: "Exterior", cover: IMG("23ea6621-6f74-4baa-acea-2fd03e312b41.jpeg") },
-  { id: "pool", label: "Pool", cover: IMG("fc02f48f-a937-42c5-895d-f9cc3113d6ca.jpeg") },
-  { id: "additional", label: "Additional photos", cover: IMG("70325367-cbae-4993-b560-18cd3f6edd53.jpeg") },
+  {
+    id: "living-1",
+    label: "Living room 1",
+    cover: IMG("a9831aeb-f441-44f5-a38f-4cf54e3f0fcf.jpeg"),
+  },
+  {
+    id: "living-2",
+    label: "Living room 2",
+    cover: IMG("090d8b0b-b539-42c0-84f8-e1fb0cdf9a93.jpeg"),
+  },
+  {
+    id: "kitchen",
+    label: "Full kitchen",
+    cover: IMG("56c44812-52c0-4481-90d8-101ec1f34c7a.jpeg"),
+  },
+  {
+    id: "bedroom",
+    label: "Bedroom",
+    cover: IMG("67c61c6f-6260-4809-9510-0360e58a345d.jpeg"),
+  },
+  {
+    id: "bathroom",
+    label: "Full bathroom",
+    cover: IMG("97c78f8a-5090-4663-aebc-ba4e13b47092.jpeg"),
+  },
+  {
+    id: "gym",
+    label: "Gym",
+    cover: IMG("9aa8e65f-94ac-4ba0-9a10-9ec91e536d22.jpeg"),
+  },
+  {
+    id: "exterior",
+    label: "Exterior",
+    cover: IMG("23ea6621-6f74-4baa-acea-2fd03e312b41.jpeg"),
+  },
+  {
+    id: "pool",
+    label: "Pool",
+    cover: IMG("fc02f48f-a937-42c5-895d-f9cc3113d6ca.jpeg"),
+  },
+  {
+    id: "additional",
+    label: "Additional photos",
+    cover: IMG("70325367-cbae-4993-b560-18cd3f6edd53.jpeg"),
+  },
 ];
 
 export const photos = [
@@ -125,18 +160,75 @@ export const property = {
     { id: "smoke", label: "Smoke alarm" },
   ],
   amenityGroups: [
-    { title: "Bathroom", items: ["Hairdryer", "Cleaning products", "Shampoo", "Hot water", "Shower gel"] },
-    { title: "Bedroom and laundry", items: ["Washing machine", "Hangers", "Bed linen", "Room-darkening blinds", "Iron", "Clothes storage", "Cot"] },
+    {
+      title: "Bathroom",
+      items: [
+        "Hairdryer",
+        "Cleaning products",
+        "Shampoo",
+        "Hot water",
+        "Shower gel",
+      ],
+    },
+    {
+      title: "Bedroom and laundry",
+      items: [
+        "Washing machine",
+        "Hangers",
+        "Bed linen",
+        "Room-darkening blinds",
+        "Iron",
+        "Clothes storage",
+        "Cot",
+      ],
+    },
     { title: "Entertainment", items: ["TV"] },
     { title: "Family", items: ["Cot"] },
-    { title: "Heating and cooling", items: ["Air conditioning", "Ceiling fan"] },
-    { title: "Home safety", items: ["Exterior security cameras on property", "Carbon monoxide alarm", "Smoke alarm"] },
+    {
+      title: "Heating and cooling",
+      items: ["Air conditioning", "Ceiling fan"],
+    },
+    {
+      title: "Home safety",
+      items: [
+        "Exterior security cameras on property",
+        "Carbon monoxide alarm",
+        "Smoke alarm",
+      ],
+    },
     { title: "Internet and office", items: ["Wifi", "Dedicated workspace"] },
-    { title: "Kitchen and dining", items: ["Kitchen", "Fridge", "Freezer", "Microwave", "Cooking basics", "Crockery and cutlery", "Kettle", "Coffee", "Wine glasses", "Toaster", "Blender", "Cooker"] },
+    {
+      title: "Kitchen and dining",
+      items: [
+        "Kitchen",
+        "Fridge",
+        "Freezer",
+        "Microwave",
+        "Cooking basics",
+        "Crockery and cutlery",
+        "Kettle",
+        "Coffee",
+        "Wine glasses",
+        "Toaster",
+        "Blender",
+        "Cooker",
+      ],
+    },
     { title: "Location features", items: ["Private entrance"] },
     { title: "Outdoor", items: ["Patio or balcony", "Outdoor dining area"] },
-    { title: "Parking and facilities", items: ["Free parking on premises", "Pool", "Hot tub", "Gym"] },
-    { title: "Services", items: ["Pets allowed", "Cleaning available during stay", "Long-term stays allowed", "Self check-in"] },
+    {
+      title: "Parking and facilities",
+      items: ["Free parking on premises", "Pool", "Hot tub", "Gym"],
+    },
+    {
+      title: "Services",
+      items: [
+        "Pets allowed",
+        "Cleaning available during stay",
+        "Long-term stays allowed",
+        "Self check-in",
+      ],
+    },
   ],
   booking: {
     nights: 5,
@@ -230,14 +322,54 @@ export const property = {
     { name: "Amisha", initial: "A" },
   ],
   similar: [
-    { title: "Beautiful Studio with a view to die for", price: "₹23,600", rating: "4.91", image: IMG("similar/s1.jpeg") },
-    { title: "NAQAB - 1bhk with private pool", price: "₹42,218", rating: "4.95", image: IMG("similar/s2.jpeg") },
-    { title: "Greentique Luxury Flat with plunge pool, Calangute", price: "₹44,506", rating: "4.94", image: IMG("similar/s3.jpeg") },
-    { title: "The Tropical Studio | 5 mins to Beach", price: "₹22,824", rating: "4.96", image: IMG("similar/s4.jpeg") },
-    { title: "Luxury Casa Bella 1BHK with plunge pool, Calangute", price: "₹39,942", rating: "4.95", image: IMG("similar/s5.jpeg") },
-    { title: "Kanso by Earthen Window | Jacuzzi | Terrace | Pool", price: "₹45,648", rating: "5.0", image: IMG("similar/s6.jpeg") },
-    { title: "Luxury Apt | Private Pool | 6 Mins from Beach", price: "₹48,786", rating: "4.93", image: IMG("similar/s2.jpeg") },
-    { title: "Serendipity Cottage - Calm Stay in Calangute-Baga.", price: "₹22,824", rating: "4.92", image: IMG("similar/s4.jpeg") },
+    {
+      title: "Beautiful Studio with a view to die for",
+      price: "₹23,600",
+      rating: "4.91",
+      image: IMG("similar/s1.jpeg"),
+    },
+    {
+      title: "NAQAB - 1bhk with private pool",
+      price: "₹42,218",
+      rating: "4.95",
+      image: IMG("similar/s2.jpeg"),
+    },
+    {
+      title: "Greentique Luxury Flat with plunge pool, Calangute",
+      price: "₹44,506",
+      rating: "4.94",
+      image: IMG("similar/s3.jpeg"),
+    },
+    {
+      title: "The Tropical Studio | 5 mins to Beach",
+      price: "₹22,824",
+      rating: "4.96",
+      image: IMG("similar/s4.jpeg"),
+    },
+    {
+      title: "Luxury Casa Bella 1BHK with plunge pool, Calangute",
+      price: "₹39,942",
+      rating: "4.95",
+      image: IMG("similar/s5.jpeg"),
+    },
+    {
+      title: "Kanso by Earthen Window | Jacuzzi | Terrace | Pool",
+      price: "₹45,648",
+      rating: "5.0",
+      image: IMG("similar/s6.jpeg"),
+    },
+    {
+      title: "Luxury Apt | Private Pool | 6 Mins from Beach",
+      price: "₹48,786",
+      rating: "4.93",
+      image: IMG("similar/s2.jpeg"),
+    },
+    {
+      title: "Serendipity Cottage - Calm Stay in Calangute-Baga.",
+      price: "₹22,824",
+      rating: "4.92",
+      image: IMG("similar/s4.jpeg"),
+    },
   ],
   map: {
     lat: 15.5186,

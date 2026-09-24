@@ -1,7 +1,7 @@
 import { Grid2x2 } from "lucide-react";
 import { photos, heroPhotoIndexes, property } from "../data/property";
 
-export default function Gallery({ onShowAll, onOpenPhoto }) {
+export default function Gallery({ onShowAll }) {
   const hero = heroPhotoIndexes.map((i) => photos[i]);
 
   return (
@@ -12,7 +12,7 @@ export default function Gallery({ onShowAll, onOpenPhoto }) {
           type="button"
           className="photo-btn"
           aria-label={p.alt}
-          onClick={() => onOpenPhoto(p.index)}
+          onClick={onShowAll}
         >
           <img src={p.src} alt="" />
         </button>
@@ -24,7 +24,7 @@ export default function Gallery({ onShowAll, onOpenPhoto }) {
             type="button"
             className="photo-btn"
             aria-label={p.alt}
-            onClick={() => onOpenPhoto(p.index)}
+            onClick={onShowAll}
           >
             <img src={p.src} alt="" />
           </button>

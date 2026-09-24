@@ -53,6 +53,13 @@ export default function ListingPage({
   const [similarPage, setSimilarPage] = useState(0);
   const photosRef = useRef(null);
 
+  function scrollToReservation() {
+    document.getElementById("reserve")?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }
+
   useEffect(() => {
     document.title = property.pageTitle;
     function onScroll() {
@@ -68,7 +75,10 @@ export default function ListingPage({
         Skip to content
       </a>
       <Header />
-      <nav className={`section-nav ${navVisible ? "visible" : ""}`} aria-label="Listing sections">
+      <nav
+        className={`section-nav ${navVisible ? "visible" : ""}`}
+        aria-label="Listing sections"
+      >
         <div className="section-nav-inner">
           <div>
             <a href="#photos">Photos</a>
@@ -78,14 +88,21 @@ export default function ListingPage({
           </div>
           <div className="reserve-mini">
             <div>
-              <div className="price">{property.booking.total} for {property.booking.nights} nights</div>
+              <div className="price">
+                {property.booking.total} for {property.booking.nights} nights
+              </div>
               <div>
-                <Star size={12} fill="currentColor" /> {property.rating} · {property.reviewCount} reviews
+                <Star size={12} fill="currentColor" /> {property.rating} ·{" "}
+                {property.reviewCount} reviews
               </div>
             </div>
-            <a className="pill-btn" href="#reserve">
+            <button
+              type="button"
+              className="pill-btn"
+              onClick={scrollToReservation}
+            >
               Reserve
-            </a>
+            </button>
           </div>
         </div>
       </nav>
@@ -98,8 +115,8 @@ export default function ListingPage({
               <section className="summary">
                 <h2>{property.locationLine}</h2>
                 <p className="meta">
-                  {property.guests} guests · {property.bedrooms} bedroom · {property.beds} bed ·{" "}
-                  {property.bathrooms} bathroom
+                  {property.guests} guests · {property.bedrooms} bedroom ·{" "}
+                  {property.beds} bed · {property.bathrooms} bathroom
                 </p>
                 <div className="fav-row">
                   <div className="fav-left">
@@ -119,14 +136,18 @@ export default function ListingPage({
                   <div style={{ display: "flex", gap: 24, fontWeight: 600 }}>
                     <div>
                       {property.rating}
-                      <div style={{ fontSize: 12, textDecoration: "underline" }}>
+                      <div
+                        style={{ fontSize: 12, textDecoration: "underline" }}
+                      >
                         {property.reviewCount} Reviews
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="host-mini">
-                  <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+                  <div
+                    style={{ display: "flex", gap: 16, alignItems: "center" }}
+                  >
                     <img src={property.host.avatar} alt="" />
                     <div>
                       <h3>Hosted by {property.host.name}</h3>
@@ -152,9 +173,15 @@ export default function ListingPage({
                   <a href="#original">Show original</a>
                 </p>
                 <p className="description">
-                  {descOpen ? property.description : `${property.description.slice(0, 220)}…`}
+                  {descOpen
+                    ? property.description
+                    : `${property.description.slice(0, 220)}…`}
                 </p>
-                <button type="button" className="show-more" onClick={() => setDescOpen((v) => !v)}>
+                <button
+                  type="button"
+                  className="show-more"
+                  onClick={() => setDescOpen((v) => !v)}
+                >
                   {descOpen ? "Show less" : "Show more"}
                 </button>
               </section>
@@ -201,7 +228,7 @@ export default function ListingPage({
                 </button>
               </section>
 
-              <Calendar />
+              <Calendar onClear={() => undefined} />
             </div>
             <BookingCard />
           </div>
@@ -239,7 +266,8 @@ function ReviewsSection({ onShowAll }) {
         </div>
         <h2 style={{ margin: 0 }}>Guest favourite</h2>
         <p style={{ color: "#6a6a6a", maxWidth: 360, textAlign: "center" }}>
-          This home is a guest favourite based on ratings, reviews and reliability
+          This home is a guest favourite based on ratings, reviews and
+          reliability
         </p>
         <button type="button" className="show-more" onClick={onShowAll}>
           How reviews work
@@ -268,7 +296,12 @@ function ReviewsSection({ onShowAll }) {
       </div>
       <div className="chips">
         {property.mentionChips.map((c) => (
-          <button type="button" className="chip" key={c.label} aria-label={`${c.label} ${c.count}`}>
+          <button
+            type="button"
+            className="chip"
+            key={c.label}
+            aria-label={`${c.label} ${c.count}`}
+          >
             <img src={c.image} alt="" />
             {c.label} {c.count}
           </button>
@@ -289,9 +322,15 @@ function ReviewsSection({ onShowAll }) {
               </div>
             </div>
             <div className="review-meta">· {r.date}</div>
-            <p className={`review-text ${openId === i ? "open" : ""}`}>{r.text}</p>
+            <p className={`review-text ${openId === i ? "open" : ""}`}>
+              {r.text}
+            </p>
             {r.text.length > 180 && (
-              <button type="button" className="show-more" onClick={() => setOpenId(openId === i ? null : i)}>
+              <button
+                type="button"
+                className="show-more"
+                onClick={() => setOpenId(openId === i ? null : i)}
+              >
                 Show more
               </button>
             )}
@@ -325,15 +364,25 @@ function LocationSection() {
           <button type="button" aria-label="Search">
             <Search size={16} />
           </button>
-          <button type="button" aria-label="Zoom in" onClick={() => setZoom((z) => Math.min(18, z + 1))}>
+          <button
+            type="button"
+            aria-label="Zoom in"
+            onClick={() => setZoom((z) => Math.min(18, z + 1))}
+          >
             <Plus size={16} />
           </button>
-          <button type="button" aria-label="Zoom out" onClick={() => setZoom((z) => Math.max(10, z - 1))}>
+          <button
+            type="button"
+            aria-label="Zoom out"
+            onClick={() => setZoom((z) => Math.max(10, z - 1))}
+          >
             <Minus size={16} />
           </button>
         </div>
       </div>
-      <p style={{ marginTop: 16, color: "#6a6a6a" }}>Exact location will be provided after booking.</p>
+      <p style={{ marginTop: 16, color: "#6a6a6a" }}>
+        Exact location will be provided after booking.
+      </p>
       <h3 style={{ marginTop: 24, fontSize: 16 }}>Neighbourhood highlights</h3>
       <p style={{ marginTop: 8 }}>{property.neighbourhood}</p>
       <button type="button" className="show-more">
@@ -345,7 +394,14 @@ function LocationSection() {
 
 function HomePin() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
       <path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-10.5z" />
     </svg>
   );
@@ -398,7 +454,8 @@ function HostSection() {
             Message host
           </button>
           <p style={{ fontSize: 12, color: "#6a6a6a", marginTop: 16 }}>
-            To help protect your payment, always use Airbnb to send money and communicate with hosts.
+            To help protect your payment, always use Airbnb to send money and
+            communicate with hosts.
           </p>
         </div>
       </div>
@@ -413,7 +470,10 @@ function ThingsToKnow() {
       <div className="things">
         <div>
           <h3>Cancellation policy</h3>
-          <p>Free cancellation before 17 October. Cancel before check-in on 18 October for a partial refund.</p>
+          <p>
+            Free cancellation before 17 October. Cancel before check-in on 18
+            October for a partial refund.
+          </p>
           <p>Review this host’s full policy for details.</p>
           <a href="#policy">Learn more</a>
         </div>
@@ -444,9 +504,7 @@ function SimilarStays({ page, setPage }) {
       <div className="similar-head">
         <h2>More stays nearby</h2>
         <div>
-          <span style={{ marginRight: 12 }}>
-            {page + 1} / 2
-          </span>
+          <span style={{ marginRight: 12 }}>{page + 1} / 2</span>
           <button
             type="button"
             className="round"
@@ -495,7 +553,12 @@ function AmenitiesModal({ onClose }) {
         ref={ref}
         onClick={(e) => e.stopPropagation()}
       >
-        <button type="button" className="round" aria-label="Close" onClick={onClose}>
+        <button
+          type="button"
+          className="round"
+          aria-label="Close"
+          onClick={onClose}
+        >
           <X size={18} />
         </button>
         <h2 id="amenity-title">What this place offers</h2>
@@ -527,7 +590,12 @@ function ReviewsModal({ onClose }) {
         ref={ref}
         onClick={(e) => e.stopPropagation()}
       >
-        <button type="button" className="round" aria-label="Close" onClick={onClose}>
+        <button
+          type="button"
+          className="round"
+          aria-label="Close"
+          onClick={onClose}
+        >
           <X size={18} />
         </button>
         <h2 id="reviews-title">{property.reviewCount} reviews</h2>

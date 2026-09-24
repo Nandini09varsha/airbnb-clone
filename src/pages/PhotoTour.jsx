@@ -20,6 +20,17 @@ function chunkPhotos(list) {
   return rows;
 }
 
+const categoryDetails = {
+  "living-1": ["Sofa · Air conditioning · Ceiling fan · TV"],
+  "living-2": ["Ceiling fan · Hot tub"],
+  kitchen: ["Kitchen"],
+  bedroom: ["Bedroom"],
+  bathroom: ["Bathroom"],
+  gym: ["Gym"],
+  exterior: ["Exterior"],
+  pool: ["Pool"],
+};
+
 export default function PhotoTour({
   onClose,
   onOpenLightbox,
@@ -34,7 +45,9 @@ export default function PhotoTour({
 
   useEffect(() => {
     if (!initialCategory) return;
-    document.getElementById(`room-${initialCategory}`)?.scrollIntoView({ behavior: "instant", block: "start" });
+    document
+      .getElementById(`room-${initialCategory}`)
+      ?.scrollIntoView({ behavior: "instant", block: "start" });
   }, [initialCategory]);
 
   const grouped = useMemo(
@@ -47,11 +60,23 @@ export default function PhotoTour({
   );
 
   return (
-    <div className="overlay" role="dialog" aria-modal="true" aria-labelledby="tour-title" ref={ref}>
+    <div
+      className="overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="tour-title"
+      ref={ref}
+    >
       <div className="tour-bar">
-        <button type="button" className="round" aria-label="Back" onClick={onClose}>
+        <button
+          type="button"
+          className="round"
+          aria-label="Back"
+          onClick={onClose}
+        >
           <ChevronLeft />
         </button>
+        <h1 className="tour-title">Photo Tour</h1>
         <div>
           <button type="button" className="ghost" onClick={onShare}>
             <ShareIcon />
@@ -70,7 +95,9 @@ export default function PhotoTour({
             className={`cat ${initialCategory === cat.id ? "active" : ""}`}
             key={cat.id}
             onClick={() =>
-              document.getElementById(`room-${cat.id}`)?.scrollIntoView({ behavior: "smooth", block: "start" })
+              document
+                .getElementById(`room-${cat.id}`)
+                ?.scrollIntoView({ behavior: "smooth", block: "start" })
             }
           >
             <img src={cat.cover} alt="" />
@@ -79,10 +106,14 @@ export default function PhotoTour({
         ))}
       </nav>
       <div className="tour-body">
-        <h2 id="tour-title">Photo tour</h2>
         {grouped.map((cat) => (
-          <section key={cat.id} id={`room-${cat.id}`}>
-            <h3 className="room-title">{cat.label}</h3>
+          <section className="room-section" key={cat.id} id={`room-${cat.id}`}>
+            <div className="room-copy">
+              <h2 className="room-title">{cat.label}</h2>
+              {categoryDetails[cat.id]?.map((detail) => (
+                <p key={detail}>{detail}</p>
+              ))}
+            </div>
             <div className="mosaic">
               {chunkPhotos(cat.photos).map((row) =>
                 row.type === "wide" ? (

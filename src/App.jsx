@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import ListingPage from "./pages/ListingPage";
 import PhotoTour from "./pages/PhotoTour";
 import Lightbox from "./pages/Lightbox";
@@ -30,8 +30,7 @@ function App() {
   const openPhotoFromListing = useCallback((index) => {
     const category = photos[index]?.category ?? null;
     setTourCategory(category);
-    setLightboxIndex(index);
-    setView("lightbox");
+    setView("photo-tour");
   }, []);
 
   const closeLightbox = useCallback(() => {
@@ -74,7 +73,12 @@ function App() {
         />
       )}
       {view === "lightbox" && (
-        <Lightbox index={lightboxIndex} onClose={closeLightbox} onPrev={onPrev} onNext={onNext} />
+        <Lightbox
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onPrev={onPrev}
+          onNext={onNext}
+        />
       )}
       {toast && (
         <div className="toast" role="status">
